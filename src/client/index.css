@@ -1,0 +1,295 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./assets/CyberWave.png);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+form.register,
+form.login {
+  margin-top: 20svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20svw;
+  padding: 3rem;
+  background-color: #190F38cc;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+form.register input,
+form.login input {
+  width: 60%;
+  padding: 0.8rem;
+  color: #fff;
+  background-color: #462f9C;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #532DC7;
+
+    border-color: #421cb6;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  &::placeholder {
+    color: #fff;
+    /* Tutaj zmieniasz kolor placeholdera */
+  }
+
+  /* Wsparcie dla starszych przeglądarek */
+  &::-webkit-input-placeholder {
+    color: #fff;
+  }
+
+  &::-moz-placeholder {
+    color: #fff;
+  }
+
+  &:-ms-input-placeholder {
+    color: #fff;
+  }
+
+  &::-ms-input-placeholder {
+    color: #fff;
+  }
+}
+
+form.register button,
+form.login button {
+  font-size: 1svw;
+  padding: 0.8rem 1rem;
+  width: 10svw;
+  background-color: #360079;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #6700E6;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 10px rgba(98, 0, 234, 0.4), 0 0 20px rgba(98, 0, 234, 0.2);
+    transition: background-color 0.3s ease;
+    transition: box-shadow 0.3s ease;
+  }
+}
+
+.back-arrow {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1svw;
+  margin: 2rem;
+  font-size: 2em
+}
+
+.back-arrow:visited {
+  color: #fff
+}
+
+.error-msg {
+  position: absolute;
+  top: 15svh;
+  color: red;
+}
+
+.wrapper {
+  position: fixed;
+  background-image: url(./assets/CyberWave.png);
+  width: 100%;
+  height: 100%;
+}
+
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5vh);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+  }
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+article {
+  display: flex;
+  width: 80%;
+  margin-top: 20svh;
+}
+
+.homeBody {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  background-color: #1111116c;
+  box-shadow: 0 0 20px rgba(98, 0, 234, 0.6), 0 0 40px rgba(98, 0, 234, 0.4), 0 0 60px rgba(98, 0, 234, 0.2);
+  font-size: 1.2em;
+  padding: 4rem 2rem;
+
+  border-radius: 10px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  text-align: justify;
+}
+
+
+
+main {
+  position: relative;
+  padding-bottom: 15svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30svh;
+  background-color: rgba(0, 0, 0, 0.245);
+}
+
+.btn {
+  margin-top: 10svh;
+  margin-left: 50svw;
+  height: 10svh;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(98, 0, 234, 0.4), 0 0 60px rgba(98, 0, 234, 0.2);
+  transition: box-shadow 1s ease;
+}
+
+@media (min-width: 300px) {
+  article {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 480px) {
+  article {
+    align-items: center;
+    flex-direction: column;
+    font-size: 1em;
+  }
+
+  .btn {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  article {
+    width: 70%;
+    font-size: 1em;
+    align-items: flex-start;
+  }
+
+  main {
+    padding-right: 5;
+  }
+
+  .btn {
+    margin-left: 50svw;
+    width: 30%;
+  }
+}
+
+@media (min-width: 1440px) {
+  article {
+    font-size: 1em;
+  }
+
+  .btn {
+    width: 30%;
+  }
+}
+
+.CTA_Button {
+  margin-top: 20svh;
+  margin-bottom: 30svh;
+  font-size: 2em;
+  width: 20svw;
+  height: 20vh;
+  position: relative;
+}

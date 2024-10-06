@@ -1,0 +1,15 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    background-color: #1111116c;
+    box-shadow: 0 0 20px rgba(98, 0, 234, 0.6), 0 0 40px rgba(98, 0, 234, 0.4), 0 0 60px rgba(98, 0, 234, 0.2);
+    font-size: 1.2em;
+    padding: 4rem 2rem;
+
+    border-radius: 10px;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+}
+
+

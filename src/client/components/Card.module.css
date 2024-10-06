@@ -1,0 +1,14 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3em;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+
+}
+
+@media (min-width: 1024px) {
+    .section {
+        max-width: 500px;
+    }
+}    

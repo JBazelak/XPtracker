@@ -1,0 +1,48 @@
+
+.SlidingButton {
+    --text: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #000000c8;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(98, 0, 234, 0.4), 0 0 60px rgba(98, 0, 234, 0.2);
+    transition: box-shadow 1s ease-out;
+    transition: color ease-out .5s;
+    
+    &:hover {
+        background-color: #57534ebf;
+        color: transparent;
+    }
+
+
+
+
+    &::after {
+        color: #fff;
+        position: absolute;
+        opacity: 0;
+        content: var(--text);
+        transition: opacity .5s ease-out;
+        z-index: 1;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
+
+
+
+}
