@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 
@@ -25,6 +25,8 @@ const ProfilePage = () => {
         <p>Nazwisko: {user.lastName}</p>
       </div>
       <button onClick={handleClick}>Wyloguj</button>
+      <Link to="/dashboard/create-training">Zaplanuj trening</Link>
+      <Outlet/>
     </>
   );
 };

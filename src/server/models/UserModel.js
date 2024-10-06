@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    ifConfigured: {
+      type: Boolean,
+      default: false,
+    },
     skills: [
       {
         type: mongoose.Schema.Types.ObjectId,

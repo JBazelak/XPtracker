@@ -20,20 +20,11 @@ body {
   padding: 0;
 }
 
+body,
 #root {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(./assets/CyberWave.png);
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 
@@ -52,11 +43,11 @@ button {
 
 form.register,
 form.login {
-  margin-top: 20svh;
+  margin-top: 15svh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20svw;
+  width: 50svw;
   padding: 3rem;
   background-color: #190F38cc;
   border-radius: 10px;
@@ -111,9 +102,9 @@ form.login input {
 
 form.register button,
 form.login button {
-  font-size: 1svw;
+  font-size: 1em;
   padding: 0.8rem 1rem;
-  width: 10svw;
+  width: 35svw;
   background-color: #360079;
   border: none;
   border-radius: 8px;
@@ -148,12 +139,12 @@ form.login button {
   color: red;
 }
 
-.wrapper {
+/* .wrapper {
   position: fixed;
   background-image: url(./assets/CyberWave.png);
   width: 100%;
   height: 100%;
-}
+} */
 
 
 @keyframes slide-fade-in {
@@ -182,11 +173,7 @@ html {
   scroll-behavior: smooth;
 }
 
-article {
-  display: flex;
-  width: 80%;
-  margin-top: 20svh;
-}
+
 
 .homeBody {
   position: relative;
@@ -221,6 +208,13 @@ main {
   align-items: center;
   margin-top: 30svh;
   background-color: rgba(0, 0, 0, 0.245);
+
+}
+
+article {
+  display: flex;
+  width: 80%;
+  margin-top: 20svh;
 }
 
 .btn {
@@ -233,6 +227,15 @@ main {
   transition: box-shadow 1s ease;
 }
 
+.CTA_Button {
+  margin-top: 20svh;
+  margin-bottom: 30svh;
+  font-size: 2em;
+  width: 20svw;
+  height: 20vh;
+  position: relative;
+}
+
 @media (min-width: 300px) {
   article {
     flex-direction: column;
@@ -243,6 +246,10 @@ main {
     margin-left: 0;
     width: 100%;
   }
+
+  .CTA_Button {
+    width: 50%;
+  }
 }
 
 @media (min-width: 480px) {
@@ -252,9 +259,15 @@ main {
     font-size: 1em;
   }
 
+  
+
   .btn {
     margin-left: 0;
     width: 100%;
+  }
+
+  .CTA_Button {
+    width: 50%;
   }
 }
 
@@ -265,6 +278,17 @@ main {
     align-items: flex-start;
   }
 
+  form.register,
+  form.login {
+    margin-top: 20svh;
+    width: 50svw;
+  }
+
+  form.register button,
+  form.login button {
+    width: 10svw;
+  }
+
   main {
     padding-right: 5;
   }
@@ -273,6 +297,10 @@ main {
     margin-left: 50svw;
     width: 30%;
   }
+
+  .CTA_Button {
+    width: 30svw;
+  }
 }
 
 @media (min-width: 1440px) {
@@ -280,16 +308,39 @@ main {
     font-size: 1em;
   }
 
+  form.register,
+  form.login {
+    margin-top: 20svh;
+    width: 20svw;
+  }
+
   .btn {
     width: 30%;
   }
 }
 
-.CTA_Button {
-  margin-top: 20svh;
-  margin-bottom: 30svh;
-  font-size: 2em;
-  width: 20svw;
-  height: 20vh;
+@media (max-width: 400px){
+  form.register,
+  form.login {
+    width: 80svw;
+  }
+}
+
+
+.App {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100svw;
+  height: 100svh;
+  background-image: url('./assets/CyberWave.png');
+  background-position: center;
+  background-size: cover;
+
+  z-index: -1;
+}
+
+.content {
   position: relative;
+  z-index: 1;
 }

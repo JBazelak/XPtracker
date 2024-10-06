@@ -21,7 +21,7 @@ const Login = () => {
     return (
 
         <form className="login" onSubmit={handleSubmit}>
-            <h3>Dołącz do nas!</h3>
+            <h3>Witaj ponownie!</h3>
             <Link to='/' className="back-arrow">&larr;</Link>
             <hr style={{ width: "100%", marginBottom: "3rem" }} />
             {error && <div className="error-msg">{error}</div>}

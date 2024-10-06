@@ -21,7 +21,7 @@ router.post('/login', loginUser)
 router.post('/register', registerUser);
 
 // GET a single user
-router.get('/desktop', requireAuth, getUserProfile);
+router.get('/dashboard', requireAuth, getUserProfile);
 
 
 // DELETE a user
