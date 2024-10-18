@@ -18,22 +18,22 @@ export const useRegister = () => {
             password: password,
             passwordCheck: passwordCheck
         })
-        .then(response => {
-            const {user, token} = response.data;
-            localStorage.setItem('user', JSON.stringify({
-                ...user,
-                token
-            }));
-            
-            dispatch({ type: 'LOGIN', payload: {...user, token} });
-            
-            setIsLoading(false);
-        })
-        .catch(e => {
-            setIsLoading(false);
-            setError(e.response.data.error);
-        });
+            .then(response => {
+                const { user, token } = response.data;
+                localStorage.setItem('user', JSON.stringify({
+                    ...user,
+                    token
+                }));
+
+                dispatch({ type: 'LOGIN', payload: { ...user, token } });
+
+                setIsLoading(false);
+            })
+            .catch(e => {
+                setIsLoading(false);
+                setError(e.response.data.error);
+            });
     };
 
-    return { register, isLoading, error }; 
+    return { register, isLoading, error };
 };

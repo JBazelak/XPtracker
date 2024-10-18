@@ -1,9 +1,10 @@
 import express from 'express';
 import ViteExpress from 'vite-express';
 import mongoose from 'mongoose';
-import skillRoute from './routes/SkillRoute.js';
+import SkillRoute from './routes/SkillRoute.js';
 import dotenv from 'dotenv';
 import users from './routes/users.js';
+import TrainingRoutes from './routes/TrainingRoutes.js'
 dotenv.config();
 
 const app = express();
@@ -23,10 +24,12 @@ connectToDb()
       console.log(`Server is listening on port: ${port}`);
       console.log(`http://localhost:${port}/`);
     });
-  }) 
+  })
   .catch(err => console.log(err));
 
 // Routes
-app.use('/api/skills', skillRoute);
+
 app.use('/api/users', users);
+app.use('/api/users', SkillRoute);
+app.use('/apu/users', TrainingRoutes)
 

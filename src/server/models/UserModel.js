@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import validator from 'validator';
-import Skill from './skillModel.js';
+
 
 const userSchema = new mongoose.Schema(
   {
@@ -49,27 +49,60 @@ const userSchema = new mongoose.Schema(
     },
     skills: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Skill',
-      }
-    ]
+        name: {
+          type: String,
+        },
+        level: {
+          type: Number,
+          default: 1,
+        },
+        experience: {
+          type: Number,
+          default: 0,
+        },
+        requiredExperience: {
+          type: Number,
+          default: 100,
+        },
+      },
+    ],
+    trainings: [
+      {
+        time: {
+          type: String,
+          required: [true, 'Nazwa treningu jest wymagana'],
+        },
+        skillName: {
+          type: String,
+          required: [true, 'Nazwa umiejętności jest wymagana'],
+        },
+        goal: {
+          type: String,
+        }
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-
-//register 
+// Metody do rejestracji i logowania użytkownika
 userSchema.statics.register = async function (login, password, firstName, lastName, passwordCheck) {
-
-  if (!login || !password || !firstName || !lastName) { throw Error("Uzupełnij wszystkie pola!") };
-  if (password !== passwordCheck) {throw Error("Hasła nie są identyczne")};
-  if (!validator.isStrongPassword(password)) { throw Error("Hasło jest za słabe!") };
+  if (!login || !password || !firstName || !lastName) {
+    throw Error("Uzupełnij wszystkie pola!");
+  }
+  if (password !== passwordCheck) {
+    throw Error("Hasła nie są identyczne");
+  }
+  if (!validator.isStrongPassword(password)) {
+    throw Error("Hasło jest za słabe!");
+  }
 
   const exists = await this.findOne({ login });
-  if (exists) { throw Error("Użytkownik istnieje") };
-
+  if (exists) {
+    throw Error("Użytkownik istnieje");
+  }
 
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
@@ -79,20 +112,52 @@ userSchema.statics.register = async function (login, password, firstName, lastNa
 }
 
 
-//login
 userSchema.statics.login = async function (login, password) {
-  if (!login || !password) { throw Error("Uzupełnij wszystkie pola!") };
+  if (!login || !password) {
+    throw Error("Uzupełnij wszystkie pola!");
+  }
 
   const user = await this.findOne({ login });
-  
-  if (!user) { throw Error("Niepoprawny login!") };
-  if(user.isLogged === true) {throw Error("Użytkownik jest zalogowany")};
-  
+  if (!user) {
+    throw Error("Niepoprawny login!");
+  }
+  if (user.isLogged === true) {
+    throw Error("Użytkownik jest zalogowany");
+  }
+
   const match = await bcrypt.compare(password, user.password);
-  if (!match) { throw Error("Niepoprawne hasło!") };
+  if (!match) {
+    throw Error("Niepoprawne hasło!");
+  }
   user.isLogged = true;
   return user;
 };
+
+
+userSchema.statics.addSkill = async function (userId, name ) {
+  
+  const user = await this.findById(userId);
+  if (!user) { return Error("Nie znaleziono użytkownika") };
+
+  const existingSkill = user.skills.find(skill => skill.name === name);
+  if (existingSkill) { return Error("Umiejętność o tej nazwie już istnieje.")};
+
+  user.skills.push({name});
+  await user.save();
+
+  return user;
+};
+
+userSchema.statics.deleteSkill = async function(userId, skillName) {
+  
+  const user = await this.findById(userId);
+  if (!user) { return Error("Nie znaleziono użytkownika") };
+
+  user.skills = user.skills.filter(skill => skill.name !== skillName);
+  await user.save();
+
+  return user;
+}
 
 
 const User = mongoose.model('User', userSchema);
