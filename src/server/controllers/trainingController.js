@@ -2,10 +2,11 @@ import User from "../models/UserModel.js";
 import mongoose from "mongoose";
 
 const addTraining = async (req, res) => {
-    const { userId, time, goals, skillId } = req.body;
+    const { userId } = req.params;
+    const trainingData = req.body;
 
     try {
-        const training = await Training.createTraining(userId, time, goals, skillId);
+        const training = await User.addTraining(userId, trainingData);
         res.status(201).json(training);
     } catch (error) {
         res.status(400).json({ error: error.message });

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useAddSkill } from '../hooks/useAddSkill'; // Importuj hook dodawania umiejętności
-import { useDeleteSkill } from '../hooks/useDeleteSkill'; // Importuj hook usuwania umiejętności
+import { useAddSkill } from '../hooks/useAddSkill'; 
+import { useDeleteSkill } from '../hooks/useDeleteSkill'; 
 
-// Placeholder for confirmation dialog
+
 const ConfirmationDialog = ({ message, onConfirm, onCancel }) => {
     return (
         <div className="dialog-overlay">
@@ -22,7 +22,7 @@ const SkillManager = () => {
     const [skillToDelete, setSkillToDelete] = useState(null);
     const { user } = useAuthContext();
     const { addSkill, error: addSkillError } = useAddSkill(); 
-    const { deleteSkill, error: deleteSkillError, isLoading } = useDeleteSkill(); // Użyj hooka do usuwania umiejętności
+    const { deleteSkill, error: deleteSkillError, isLoading } = useDeleteSkill();
 
     const handleNewSkillChange = (e) => {
         setNewSkill(e.target.value);

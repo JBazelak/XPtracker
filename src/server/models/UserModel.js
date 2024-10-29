@@ -68,16 +68,26 @@ const userSchema = new mongoose.Schema(
     ],
     trainings: [
       {
-        time: {
+        selectedSkill: {
           type: String,
-          required: [true, 'Nazwa treningu jest wymagana'],
         },
-        skillName: {
-          type: String,
-          required: [true, 'Nazwa umiejętności jest wymagana'],
+        goals: [
+          {
+            goalName: {
+              type: String,
+            },
+            isAchived: {
+              type: Boolean,
+              default: false,
+            }
+          },
+        ],
+        totalExp: {
+          type: Number
         },
-        goal: {
-          type: String,
+        isCompleated: {
+          type: Boolean,
+          default: false,
         }
       },
     ],
@@ -134,22 +144,22 @@ userSchema.statics.login = async function (login, password) {
 };
 
 
-userSchema.statics.addSkill = async function (userId, name ) {
-  
+userSchema.statics.addSkill = async function (userId, name) {
+
   const user = await this.findById(userId);
   if (!user) { return Error("Nie znaleziono użytkownika") };
 
   const existingSkill = user.skills.find(skill => skill.name === name);
-  if (existingSkill) { return Error("Umiejętność o tej nazwie już istnieje.")};
+  if (existingSkill) { return Error("Umiejętność o tej nazwie już istnieje.") };
 
-  user.skills.push({name});
+  user.skills.push({ name });
   await user.save();
 
   return user;
 };
 
-userSchema.statics.deleteSkill = async function(userId, skillName) {
-  
+userSchema.statics.deleteSkill = async function (userId, skillName) {
+
   const user = await this.findById(userId);
   if (!user) { return Error("Nie znaleziono użytkownika") };
 
@@ -158,6 +168,36 @@ userSchema.statics.deleteSkill = async function(userId, skillName) {
 
   return user;
 }
+
+userSchema.statics.addTraining = async function (userId, trainingData) {
+  try {
+    const user = await this.findById(userId);
+    if (!user) {
+      throw new Error('Użytkownik nie znaleziony');
+    }
+
+    if (!trainingData.selectedSkill || !trainingData.goals) {
+      throw new Error("Dane treningu są niekompletne");
+    }
+
+    const goals = trainingData.goals.map(goal => ({
+      goalName: goal.goalName,
+    }));
+
+    const totalExp = goals.length * 100;
+
+    user.trainings.push({
+      selectedSkill: trainingData.selectedSkill,
+      goals: goals,
+      totalExp: totalExp
+    });
+
+    await user.save();
+    return user;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 
 const User = mongoose.model('User', userSchema);

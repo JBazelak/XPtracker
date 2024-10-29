@@ -31,5 +31,5 @@ connectToDb()
 
 app.use('/api/users', users);
 app.use('/api/users', SkillRoute);
-app.use('/apu/users', TrainingRoutes)
+app.use('/api/users', TrainingRoutes)
 

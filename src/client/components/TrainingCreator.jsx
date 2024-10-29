@@ -1,13 +1,13 @@
 import { React, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useAddTraining } from "../hooks/useAddTraining";
 
 const TrainingCreator = () => {
-    const [isloading, setIsLoading] = useState(null);
-    const [time, setTime] = useState()
     const { user } = useAuthContext();
     const [selectedSkill, setSelectedSkill] = useState('');
     const [goals, setGoals] = useState([]);
     const [newGoal, setNewGoal] = useState('');
+    const [addTraining, isLoading, error] = useAddTraining();
 
 
     const addGoal = () => {
@@ -28,33 +28,26 @@ const TrainingCreator = () => {
         setSelectedSkill(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const training = await addTraining({ selectedSkill, goals})
+            if (training) {
+                setSelectedSkill('');
+                setDescription('');
+                setGoals([]);
+            }
 
-       
-
-        
-        console.log('Trening został zaplanowany:', trainingData);
-       
-        setSelectedSkill('');
-        setTrainingTime('');
-        setDescription('');
-        setGoals([]);
+        } catch (error) {
+            console.log("Błąd podczas dodawania treningu", error)
+        }
     };
 
     return (
         <form>
             <h1>Zaplanuj swój trening!</h1>
-
-            <input
-                type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
-                required
-            />
-
             <select value={selectedSkill} onChange={handleSkillChange} required>
-                <option value={null} disabled select>Wybierz umiejętność</option>
+                <option value="" disabled>Wybierz umiejętność</option>
                 {user.skills.length === 0 ? (
                     <option disabled>Musisz dodać jakąś umiejętność</option>
                 ) : (
@@ -72,9 +65,8 @@ const TrainingCreator = () => {
                 onChange={(e) => setNewGoal(e.target.value)}
                 placeholder="Dodaj nowy cel"
             />
-            <button type="button" onClick={addGoal}>
-                Dodaj cel
-            </button>
+            <button type="button" onClick={addGoal}>Dodaj cel</button>
+
             <h3>Lista celów:</h3>
             <ul>
                 {goals.map((goal, index) => (

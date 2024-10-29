@@ -4,6 +4,6 @@ import { requireAuth } from "../middleware/requireAuth.js";
 
 const router = express.Router();
 
-router.post('/api/users/', addTraining);
+router.post('/:userId/training', addTraining);
 
 export default router;
