@@ -3,7 +3,7 @@ import ViteExpress from 'vite-express';
 import mongoose from 'mongoose';
 import SkillRoute from './routes/SkillRoute.js';
 import dotenv from 'dotenv';
-import users from './routes/users.js';
+import users from './routes/UserRoutes.js';
 import TrainingRoutes from './routes/TrainingRoutes.js'
 dotenv.config();
 

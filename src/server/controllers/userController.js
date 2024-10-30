@@ -27,7 +27,19 @@ const loginUser = async (req, res) => {
   }
 }
 
+const logoutUser = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await userService.logoutUser(userId);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
+
 export {
   registerUser,
   loginUser,
+  logoutUser,
 }
