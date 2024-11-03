@@ -12,7 +12,8 @@ const TrainingCreator = () => {
 
     const addGoal = () => {
         if (newGoal) {
-            setGoals([...goals, newGoal]);
+            setGoals([...goals, { goalName: newGoal }]);
+            
             setNewGoal('');
         }
     };
@@ -31,13 +32,12 @@ const TrainingCreator = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const training = await addTraining({ selectedSkill, goals})
+            const training = await addTraining({ selectedSkill, goals })
             if (training) {
                 setSelectedSkill('');
                 setDescription('');
                 setGoals([]);
             }
-
         } catch (error) {
             console.log("Błąd podczas dodawania treningu", error)
         }
@@ -71,7 +71,7 @@ const TrainingCreator = () => {
             <ul>
                 {goals.map((goal, index) => (
                     <li key={index}>
-                        {goal} <button type="button" onClick={() => removeGoal(index)}>Usuń</button>
+                        {goal.goalName} <button type="button" onClick={() => removeGoal(index)}>Usuń</button>
                     </li>
                 ))}
             </ul>

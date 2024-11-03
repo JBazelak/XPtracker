@@ -1,6 +1,6 @@
 const trainingService = (User) => {
     return {
-        async addTraining(userId, trainingData) {
+        async planTraining(userId, trainingData) {
             try {
                 const user = await User.findById(userId);
                 if (!user) {
@@ -13,8 +13,9 @@ const trainingService = (User) => {
 
                 const goals = trainingData.goals.map(goal => ({
                     goalName: goal.goalName,
+                    isAchived: false,
                 }));
-
+                
                 const totalExp = goals.length * 100;
 
                 user.trainings.push({
@@ -29,6 +30,13 @@ const trainingService = (User) => {
                 throw new Error(error.message);
             }
         },
+        async getAllTrainings(userId){
+            const user = User.findById(userId);
+            if (!user) {
+                throw new Error('Użytkownik nie znaleziony');
+            }
+            return user.trainings;
+        }
     }
 }
 

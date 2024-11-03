@@ -75,7 +75,6 @@ const userSchema = new mongoose.Schema(
             },
             isAchived: {
               type: Boolean,
-              default: false,
             }
           },
         ],

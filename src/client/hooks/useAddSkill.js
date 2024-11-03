@@ -21,11 +21,11 @@ export const useAddSkill = () => {
             })
 
             .then((response) => {
-                console.log("Skill added:", response.data);
                 const { updatedUser, token } = response.data;
+                updatedUser.token = token
                 console.log("Nuser ", updatedUser)
-                localStorage.setItem('user', JSON.stringify({...updatedUser, token }));
-                dispatch({ type: 'LOGIN', payload: { ...updatedUser, token} });
+                localStorage.setItem('user', JSON.stringify({...updatedUser }));
+                dispatch({ type: 'LOGIN', payload: { ...updatedUser} });
                 setIsLoading(false);
             })
             .catch((e) => {

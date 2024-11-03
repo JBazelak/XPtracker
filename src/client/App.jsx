@@ -8,16 +8,16 @@ import Dashboard from './pages/Dashborad';
 import FirstConfig from './pages/FirstConfig'
 import CreateTraining from './pages/CreateTraining';
 import { useAuthContext } from "./hooks/useAuthContext";
-import OverAll from "./components/OverAll";
-import Settings from "./components/Settings";
-import SkillManager from "./components/SkillManager";
+import OverAll from "./pages/OverAll";
+import Settings from "./pages/Settings";
+import SkillManager from "./pages/SkillManager";
 
 
 import {
     BrowserRouter, Routes, Route, Navigate
 } from "react-router-dom";
 import "./index.css"
-import TrainingCreator from "./components/TrainingCreator";
+import TrainingCreator from "./pages/TrainingCreator";
 
 
 

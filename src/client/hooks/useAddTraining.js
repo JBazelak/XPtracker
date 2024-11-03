@@ -18,21 +18,18 @@ export const useAddTraining = () => {
                 trainingData,
                 {
                     headers: {
-                        Authorization: `Bearer ${user.token}`
+                       Authorization: `Bearer ${user.token}`
                     }
                 }
             );
 
             console.log("Training added:", response.data);
 
-            const { training, token } = response.data;
-            const updatedUser = { 
-                ...user, 
-                training: [...(user.trainings || []), training] 
-            };
-
-            localStorage.setItem('user', JSON.stringify({ ...updatedUser, token }));
-            dispatch({ type: 'LOGIN', payload: { ...updatedUser, token } });
+            const { updatedUser, token } = response.data;
+            updatedUser.token = token;
+            console.log(updatedUser)
+            localStorage.setItem('user', JSON.stringify({ ...updatedUser }));
+            dispatch({ type: 'LOGIN', payload: { ...updatedUser } });
         } catch (e) {
             setError(e.response?.data?.error || "Wystąpił nieoczekiwany błąd");
         } finally {

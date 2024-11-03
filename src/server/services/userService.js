@@ -33,9 +33,10 @@ const userService = (User) => {
     async logoutUser(userId) {
       try {
         const user = await User.findById(userId);
-        if (!user) {
-          throw new Error("Nie znaleziono użytkownika!");
-        }
+        
+        if (!user) { throw new Error("Nie znaleziono użytkownika!") }
+        if (user.isLogged === false) { throw new Error("Użytkownik jest już wylogowany") }
+        
         user.isLogged = false;
         await user.save();
         return user;

@@ -31,8 +31,8 @@ const logoutUser = async (req, res) => {
   const { userId } = req.params;
 
   try {
-    const user = await userService.logoutUser(userId);
-    res.status(200).json(user);
+    await userService.logoutUser(userId);
+    res.status(200).json({message: "Logout succesfully"});
   } catch (error) {
     res.status(400).json({error: error.message})
   }
