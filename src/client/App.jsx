@@ -3,15 +3,14 @@ import HomePage from "./pages/HomePage";
 import React from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import NotFoundPage from "./pages/NotFoundPage";
+//import NotFoundPage from "./pages/NotFoundPage";
 import Dashboard from './pages/Dashborad';
 import FirstConfig from './pages/FirstConfig'
-import CreateTraining from './pages/CreateTraining';
 import { useAuthContext } from "./hooks/useAuthContext";
 import OverAll from "./pages/OverAll";
 import Settings from "./pages/Settings";
 import SkillManager from "./pages/SkillManager";
-
+import TrainingManager from "./pages/TrainingManager";
 
 import {
     BrowserRouter, Routes, Route, Navigate
@@ -24,9 +23,8 @@ import TrainingCreator from "./pages/TrainingCreator";
 const App = () => {
     const { user } = useAuthContext();
 
-    return (<>
-        <div className="App"></div>
-        <div className="contet">
+    return (
+        <>
             <BrowserRouter>
                 <Routes>
                     <Route
@@ -61,6 +59,10 @@ const App = () => {
                             path="manage-skills"
                             element={<SkillManager />}
                         />
+                        <Route
+                            path="manage-trainings"
+                            element={<TrainingManager />}
+                        />
                     </Route>
                     <Route
                         path="first-config"
@@ -68,8 +70,7 @@ const App = () => {
                     />
                 </Routes>
             </BrowserRouter>
-        </div>
-    </>
+        </>
 
     )
 }

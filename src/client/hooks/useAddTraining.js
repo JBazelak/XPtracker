@@ -23,11 +23,9 @@ export const useAddTraining = () => {
                 }
             );
 
-            console.log("Training added:", response.data);
-
             const { updatedUser, token } = response.data;
             updatedUser.token = token;
-            console.log(updatedUser)
+            
             localStorage.setItem('user', JSON.stringify({ ...updatedUser }));
             dispatch({ type: 'LOGIN', payload: { ...updatedUser } });
         } catch (e) {

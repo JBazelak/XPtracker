@@ -31,6 +31,10 @@ const SideMenu = () => {
                 <span className="icon">📅</span>
                 <span className="text">Zaplanuj trening</span>
             </Link>
+            <Link to="/dashboard/manage-trainings" className="sidebar-item">
+                <span className="icon">📅</span>
+                <span className="text">Twoje treningi</span>
+            </Link>
             <button onClick={handleClick} >Wyloguj</button>
         </div>
     );

@@ -38,6 +38,7 @@ const userService = (User) => {
         if (user.isLogged === false) { throw new Error("Użytkownik jest już wylogowany") }
         
         user.isLogged = false;
+        
         await user.save();
         return user;
       } catch (error) {

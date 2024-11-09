@@ -81,6 +81,10 @@ const userSchema = new mongoose.Schema(
         totalExp: {
           type: Number
         },
+        progress: {
+          type: Number,
+          default: 0,
+        },
         isCompleated: {
           type: Boolean,
           default: false,

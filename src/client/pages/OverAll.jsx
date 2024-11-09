@@ -21,7 +21,7 @@ const OverAll = () => {
                         <h4>Cele:</h4>
                         {training.goals && training.goals.length > 0 ? ( // Sprawdzamy istnienie `training.goals`
                             <ul>
-                                {training.goals.map((goal, i) => (
+                                {training.goals.map((goal) => (
                                     <div key={goal._id}>
                                         <li>{goal.goalName}</li>
                                         <li>

@@ -6,7 +6,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
 
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,174 +13,30 @@
   -webkit-text-size-adjust: 100%;
 }
 
-html,
 body {
   margin: 0;
   padding: 0;
 }
 
-body,
-#root {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-form.register,
-form.login {
-  margin-top: 15svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50svw;
-  padding: 3rem;
-  background-color: #190F38cc;
-  border-radius: 10px;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-
-form.register input,
-form.login input {
-  width: 60%;
-  padding: 0.8rem;
-  color: #fff;
-  background-color: #462f9C;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: #532DC7;
-
-    border-color: #421cb6;
-    outline: none;
-    transition: background-color 0.3s ease;
-  }
-
-  &::placeholder {
-    color: #fff;
-    /* Tutaj zmieniasz kolor placeholdera */
-  }
-
-  /* Wsparcie dla starszych przeglądarek */
-  &::-webkit-input-placeholder {
-    color: #fff;
-  }
-
-  &::-moz-placeholder {
-    color: #fff;
-  }
-
-  &:-ms-input-placeholder {
-    color: #fff;
-  }
-
-  &::-ms-input-placeholder {
-    color: #fff;
-  }
-}
-
-form.register button,
-form.login button {
-  font-size: 1em;
-  padding: 0.8rem 1rem;
-  width: 35svw;
-  background-color: #360079;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover,
-  &:focus {
-    background-color: #6700E6;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 10px rgba(98, 0, 234, 0.4), 0 0 20px rgba(98, 0, 234, 0.2);
-    transition: background-color 0.3s ease;
-    transition: box-shadow 0.3s ease;
-  }
-}
-
-.back-arrow {
-  text-decoration: none;
-  position: absolute;
-  top: 0;
-  left: 1svw;
-  margin: 2rem;
-  font-size: 2em
-}
-
-.back-arrow:visited {
-  color: #fff
-}
-
-.error-msg {
-  position: absolute;
-  top: 15svh;
-  color: red;
-}
-
-/* .wrapper {
+.background {
   position: fixed;
-  background-image: url(./assets/CyberWave.png);
-  width: 100%;
-  height: 100%;
-} */
-
-
-@keyframes slide-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(5vh);
-  }
+  width: 100svw;
+  height: 100svh;
+  background-image: url('./assets/CyberWave.png');
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hidden {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition: all 1s;
-  }
-
-  .show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-
-
-.homeBody {
+.home {
   position: relative;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+
 }
 
 .section {
@@ -236,15 +91,143 @@ article {
   position: relative;
 }
 
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.form-wrapper {
+  width: 100svw;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form.register,
+form.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+  padding: 3rem;
+  background-color: #190F38cc;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+form.register input,
+form.login input {
+  width: 60%;
+  padding: 0.8rem;
+  color: #fff;
+  background-color: #462f9C;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #532DC7;
+
+    border-color: #421cb6;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  &::placeholder {
+    color: #fff;
+
+
+    &::-webkit-input-placeholder {
+      color: #fff;
+    }
+
+    &::-moz-placeholder {
+      color: #fff;
+    }
+
+    &:-ms-input-placeholder {
+      color: #fff;
+    }
+
+    &::-ms-input-placeholder {
+      color: #fff;
+    }
+  }
+
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+form.register button,
+form.login button {
+  font-size: 1em;
+  padding: 0.8rem 1rem;
+  width: 80%;
+  background-color: #360079;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #6700E6;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 10px rgba(98, 0, 234, 0.4), 0 0 20px rgba(98, 0, 234, 0.2);
+    transition: background-color 0.3s ease;
+    transition: box-shadow 0.3s ease;
+  }
+}
+
+.back-arrow {
+  text-decoration: none;
+  position: absolute;
+  top: 0;
+  left: 1svw;
+  margin: 2rem;
+  font-size: 2em
+}
+
+.back-arrow:visited {
+  color: #fff
+}
+
+.error-msg {
+  position: absolute;
+  top: 15svh;
+  color: red;
+}
+
 @media (min-width: 300px) {
   article {
     flex-direction: column;
     align-items: center;
   }
 
+  form.register,
+  form.login {
+    width: 100%;
+  }
+
+
   .btn {
     margin-left: 0;
-    width: 100%;
+    width: 80%;
   }
 
   .CTA_Button {
@@ -259,7 +242,10 @@ article {
     font-size: 1em;
   }
 
-  
+  form.register,
+  form.login {
+    width: 50%;
+  }
 
   .btn {
     margin-left: 0;
@@ -280,14 +266,13 @@ article {
 
   form.register,
   form.login {
-    margin-top: 20svh;
-    width: 50svw;
+    width: 50%;
   }
 
-  form.register button,
+  /* form.register button,
   form.login button {
-    width: 10svw;
-  }
+    width: 10%;
+  } */
 
   main {
     padding-right: 5;
@@ -310,51 +295,66 @@ article {
 
   form.register,
   form.login {
-    margin-top: 20svh;
-    width: 20svw;
+    width: 20%;
   }
 
   .btn {
-    width: 30%;
+    width: 50%;
   }
 }
 
-@media (max-width: 400px){
+@media (max-width: 400px) {
+
   form.register,
   form.login {
-    width: 80svw;
+
+    width: 100%;
   }
 }
 
-
-.App {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100svw;
-  height: 100svh;
-  background-image: url('./assets/CyberWave.png');
-  background-position: center;
-  background-size: cover;
-
-  z-index: -1;
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5vh);
+  }
 }
 
-.content {
-  position: relative;
-  z-index: 1;
+@media (prefers-reduced-motion: no-preference) {
+  .hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+  }
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
 }
 
-/* SIDEBAR ===================================================*/
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+/* 
+
+
+
+
+/* SIDEBAR =================================================== */
 
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  width: 100px; /* Domyślna szerokość sidebara */
+  width: 100px; 
   background-color: #282c34;
-  transition: width 0.3s ease; /* Animacja zmiany szerokości */
+  transition: width 0.3s ease; 
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -363,7 +363,7 @@ article {
 }
 
 .sidebar:hover {
-  width: 250px; /* Rozszerzenie po najechaniu */
+  width: 250px; 
 }
 
 .sidebar-item {
@@ -376,7 +376,7 @@ article {
   align-items: center;
   justify-content: flex-start;
   transition: background-color 0.3s ease;
-  white-space: nowrap; /* Zapobiega łamaniu tekstu */
+  white-space: nowrap; 
 }
 
 .sidebar-item:hover {
@@ -395,4 +395,110 @@ article {
 
 .sidebar:hover .text {
   opacity: 1; 
+}
+
+
+
+.training-box {
+  width: 45%;
+  border: 2px solid #007bff;
+  border-radius: 8px;       
+  padding: 16px;           
+  margin-bottom: 20px;      
+  background-color: #f9f9f9; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.training-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.training-box p {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #555;
+}
+
+.training-box ul {
+  padding-left: 20px; 
+}
+
+.training-box li {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.training-box-wrapper {
+  margin: 10svw;
+  width: 80svw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+} 
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 300px;
+}
+
+.dialog-buttons {
+  margin-top: 20px;
+}
+
+.dialog-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-buttons button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.dialog-buttons button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0df;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #76c7c0;
+  width: 0; 
+  transition: width 0.3s ease;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  line-height: 20px;
 }
