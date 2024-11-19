@@ -74,7 +74,7 @@ article {
 
 .btn {
   margin-top: 10svh;
-  margin-left: 50svw;
+  margin-right: 20svw;
   height: 10svh;
   position: relative;
   border-radius: 8px;
@@ -213,126 +213,7 @@ form.login button {
   color: red;
 }
 
-@media (min-width: 300px) {
-  article {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  form.register,
-  form.login {
-    width: 100%;
-  }
-
-
-  .btn {
-    margin-left: 0;
-    width: 80%;
-  }
-
-  .CTA_Button {
-    width: 50%;
-  }
-}
-
-@media (min-width: 480px) {
-  article {
-    align-items: center;
-    flex-direction: column;
-    font-size: 1em;
-  }
-
-  form.register,
-  form.login {
-    width: 50%;
-  }
-
-  .btn {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .CTA_Button {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  article {
-    width: 70%;
-    font-size: 1em;
-    align-items: flex-start;
-  }
-
-  form.register,
-  form.login {
-    width: 50%;
-  }
-
-  /* form.register button,
-  form.login button {
-    width: 10%;
-  } */
-
-  main {
-    padding-right: 5;
-  }
-
-  .btn {
-    margin-left: 50svw;
-    width: 30%;
-  }
-
-  .CTA_Button {
-    width: 30svw;
-  }
-}
-
-@media (min-width: 1440px) {
-  article {
-    font-size: 1em;
-  }
-
-  form.register,
-  form.login {
-    width: 20%;
-  }
-
-  .btn {
-    width: 50%;
-  }
-}
-
-@media (max-width: 400px) {
-
-  form.register,
-  form.login {
-
-    width: 100%;
-  }
-}
-
-@keyframes slide-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(5vh);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hidden {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition: all 1s;
-  }
-
-  .show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-  }
-}
 
 html {
   scroll-behavior: smooth;
@@ -346,6 +227,25 @@ html {
 
 
 /* SIDEBAR =================================================== */
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 1.5em;
+  color: white;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 2000;
+}
+
+.sidebar-container {
+  position: relative;
+}
 
 .sidebar {
   position: fixed;
@@ -502,3 +402,141 @@ html {
   font-weight: bold;
   line-height: 20px;
 }
+
+
+@media (min-width: 300px) {
+  article {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form.register,
+  form.login {
+    width: 100%;
+  }
+
+
+  .btn {
+    margin-left: 0;
+    width: 80%;
+  }
+
+  .CTA_Button {
+    width: 50%;
+  }
+}
+
+@media (min-width: 480px) {
+  article {
+    align-items: center;
+    flex-direction: column;
+    font-size: 1em;
+  }
+
+  form.register,
+  form.login {
+    width: 50%;
+  }
+
+  .btn {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .CTA_Button {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  article {
+    width: 70%;
+    font-size: 1em;
+    align-items: flex-start;
+  }
+
+  form.register,
+  form.login {
+    width: 50%;
+  }
+
+  /* form.register button,
+  form.login button {
+    width: 10%;
+  } */
+
+  main {
+    padding-right: 5;
+  }
+
+  .btn {
+    margin-left: 45svw;
+    width: 30%;
+  }
+
+  .CTA_Button {
+    width: 30svw;
+  }
+
+  
+
+}
+
+@media (min-width: 1440px) {
+  article {
+    font-size: 1em;
+  }
+
+  form.register,
+  form.login {
+    width: 20%;
+  }
+
+  .btn {
+    width: 50%;
+  }
+}
+
+@media (max-width: 400px) {
+
+  form.register,
+  form.login {
+
+    width: 100%;
+  }
+
+  .sidebar:hover {
+    width: 50svw; 
+  }
+  
+  .training-box {
+    width: 90%;
+  }
+
+  .sidebar {
+    width: 100svw;
+  }
+}
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5vh);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+  }
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}
+

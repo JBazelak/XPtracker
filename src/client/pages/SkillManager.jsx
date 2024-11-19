@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useAddSkill } from '../hooks/useAddSkill'; 
-import { useDeleteSkill } from '../hooks/useDeleteSkill'; 
+import { useSkill } from '../hooks/useSkill'; 
+
 
 
 const ConfirmationDialog = ({ message, onConfirm, onCancel }) => {
@@ -21,8 +21,7 @@ const SkillManager = () => {
     const [showDialog, setShowDialog] = useState(false);
     const [skillToDelete, setSkillToDelete] = useState(null);
     const { user } = useAuthContext();
-    const { addSkill, error: addSkillError } = useAddSkill(); 
-    const { deleteSkill, error: deleteSkillError, isLoading } = useDeleteSkill();
+    const { addSkill,deleteSkill, error , isLoading } = useSkill(); 
 
     const handleNewSkillChange = (e) => {
         setNewSkill(e.target.value);
@@ -75,7 +74,7 @@ const SkillManager = () => {
                     placeholder="Dodaj nową umiejętność"
                 />
                 <button onClick={handleAddSkill}>Dodaj Umiejętność</button>
-                {addSkillError && <p style={{ color: 'red' }}>{addSkillError}</p>} 
+                {error && <p style={{ color: 'red' }}>{error}</p>} 
             </div>
 
             <ul>
@@ -89,7 +88,7 @@ const SkillManager = () => {
                 ))}
             </ul>
 
-            {deleteSkillError && <p style={{ color: 'red' }}>{deleteSkillError}</p>}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
 
             {showDialog && (
                 <ConfirmationDialog

@@ -19,14 +19,13 @@ export const useRegister = () => {
             passwordCheck: passwordCheck
         })
             .then(response => {
-                const { user, token } = response.data;
+                const { user, accessToken } = response.data;
+
                 localStorage.setItem('user', JSON.stringify({
                     ...user,
-                    token
+                    accessToken
                 }));
-
-                dispatch({ type: 'LOGIN', payload: { ...user, token } });
-
+                dispatch({ type: 'LOGIN', payload: { ...user, accessToken } });
                 setIsLoading(false);
             })
             .catch(e => {
@@ -34,6 +33,5 @@ export const useRegister = () => {
                 setError(e.response.data.error);
             });
     };
-
     return { register, isLoading, error };
 };

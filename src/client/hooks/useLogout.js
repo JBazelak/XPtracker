@@ -2,11 +2,15 @@ import { useAuthContext } from "./useAuthContext"
 import axios from "axios";
 
 export const useLogout = () => {
-    const { user, dispatch } = useAuthContext();
+
+    const { dispatch } = useAuthContext();
+
     const logout = () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const accessToken = user?.accessToken;
         axios.patch(`/api/users/${user._id}/logout`, {}, {
             headers: {
-                Authorization: `Bearer ${user.token}`
+                Authorization: `Bearer ${accessToken}`
             }
         })
             .then(() => {
@@ -16,8 +20,6 @@ export const useLogout = () => {
             .catch(e => {
                 console.log(e.response.data.error);
             })
-
     }
-
     return { logout };
-}
+};
